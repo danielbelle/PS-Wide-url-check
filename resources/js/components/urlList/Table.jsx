@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import TableRow from './TableRow';
 
 
 class Table extends Component {
@@ -9,15 +11,24 @@ class Table extends Component {
         super(props);
 
         this.state = {
-            url: [],
+            urls: [],
         }
     }
 
 
-
+    //Life cycle method
+    componentDidMount(){
+        this.getUrlList();
+    }
 
     // GET URL list
     getUrlList = () => {
+        let self = this;
+        axios.get('/get/url/list').then(function (response){
+            self.setState({
+                urls: response.data
+            });
+        });
 
     }
 
@@ -31,19 +42,16 @@ class Table extends Component {
                             <table className="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col" width="100px">#</th>
-                                        <th scope="col" width="100px">Nome</th>
-                                        <th scope="col" width="100px">Salary</th>
-                                        <th scope="col" width="100px">Actions</th>
+                                        <th scope="col" width="30px">#</th>
+                                        <th scope="col" width="500px">Url</th>
+                                        <th scope="col" width="50px">Visto</th>
+                                        <th scope="col" width="100px">Ver mais</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
+                                    {this.state.urls.map(function(x,i){
+                                        return <TableRow key={i} data={x} />
+                                    })}
                                 </tbody>
                             </table>
                         </div>
