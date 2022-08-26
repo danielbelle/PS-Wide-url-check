@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import TableActionButtons from './TableActionButtons';
 
 class TableRow extends Component {
 
@@ -13,7 +13,9 @@ class TableRow extends Component {
                 <th>{this.props.data.id}</th>
                 <td>{this.props.data.url}</td>
                 <td>{this.props.data.acessado}</td>
-                <td>{this.props.data.acessado}</td>
+                <td>
+                    <TableActionButtons eachRowId={ this.props.data.id}  />
+                </td>
             </tr>
         )
     }

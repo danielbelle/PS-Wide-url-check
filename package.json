@@ -3,7 +3,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "watch": "vite build --watch"
+        "watch": "vite build --watch",
+        "commit": "cz"
     },
     "devDependencies": {
         "@popperjs/core": "^2.10.2",

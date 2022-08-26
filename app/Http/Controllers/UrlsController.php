@@ -13,10 +13,29 @@ class UrlsController extends Controller
 
     public function getUrlList()
     {
-        try {
-            $url = Url::orderBy('id','DESC')->get();
-            return response()->json($url);
-        } catch (Exception $e) {
+        try
+        {
+            $urls = Url::orderBy('id', 'DESC')->get();
+            return response()->json($urls);
+        }
+        catch(Exception $e)
+        {
+            Log::error($e);
+        }
+    }
+
+    /**
+     * Pega as informações de cada url
+     */
+    public function getUrlDetails(Request $request)
+    {
+        try
+        {
+            $urlData = Url::findOrFail($request->get('urlId'));
+            return response()->json($urlData);
+        }
+        catch (Exception $e)
+        {
             Log::error($e);
         }
     }

@@ -1,7 +1,6 @@
-import axios from 'axios';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import TableRow from './TableRow';
+import axios from 'axios';
 
 
 class Table extends Component {
@@ -41,11 +40,11 @@ class Table extends Component {
                         <div className="card">
                             <table className="table table-hover">
                                 <thead>
-                                    <tr>
-                                        <th scope="col" width="30px">#</th>
-                                        <th scope="col" width="500px">Url</th>
-                                        <th scope="col" width="50px">Visto</th>
-                                        <th scope="col" width="100px">Ver mais</th>
+                                    <tr width="auto">
+                                        <th scope="col" width="50px">#</th>
+                                        <th scope="col" width="2000px">Url</th>
+                                        <th scope="col" width="150px">Visto</th>
+                                        <th scope="col" width="3000px">Funções</th>
                                     </tr>
                                 </thead>
                                 <tbody>

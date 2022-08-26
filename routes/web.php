@@ -14,3 +14,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('get/url/list', [UrlsController::class, 'getUrlList'])->name('url.list');
+
+Route::post('/get/individual/url/details', [UrlsController::class, 'getUrlDetails'])->name('url.details');
