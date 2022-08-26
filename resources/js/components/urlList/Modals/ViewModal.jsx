@@ -22,7 +22,7 @@ class ViewModal extends Component {
                             Acessado?: <strong>{this.props.urlData.currentUrlAcessado} </strong>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                         </div>
                     </div>
                 </div>

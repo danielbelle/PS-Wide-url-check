@@ -16,3 +16,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('get/url/list', [UrlsController::class, 'getUrlList'])->name('url.list');
 
 Route::post('/get/individual/url/details', [UrlsController::class, 'getUrlDetails'])->name('url.details');
+
+Route::post('/update/url/data', [UrlsController::class, 'updateUrlData']);
+
+Route::delete('/delete/url/data/{url}', [UrlsController::class, 'destroy']);
+
+Route::post('/store/url/data',[UrlsController::class, 'store']);

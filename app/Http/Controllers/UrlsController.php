@@ -9,33 +9,88 @@ use App\Models\Url;
 
 class UrlsController extends Controller
 {
-    // GET URL list from database
+    // Pega a lista de URL do banco de dados.
 
     public function getUrlList()
     {
-        try
-        {
+        try {
             $urls = Url::orderBy('id', 'DESC')->get();
             return response()->json($urls);
-        }
-        catch(Exception $e)
-        {
+        } catch (Exception $e) {
             Log::error($e);
         }
     }
 
     /**
-     * Pega as informações de cada url
+     * Pega as informações de cada URL
      */
     public function getUrlDetails(Request $request)
     {
-        try
-        {
+        try {
             $urlData = Url::findOrFail($request->get('urlId'));
             return response()->json($urlData);
+        } catch (Exception $e) {
+            Log::error($e);
         }
-        catch (Exception $e)
-        {
+    }
+
+    /**
+     * Atualiza a URL
+     */
+    public function updateUrlData(Request $request)
+    {
+        try {
+            $urlId = $request->get('urlId');
+            $urlName = $request->get('urlName');
+            $urlAcessado = $request->get('urlAcessado');
+
+            Url::where('id', $urlId)->update([
+                'url' => $urlName,
+                'acessado' => $urlAcessado
+            ]);
+
+            return response()->json([
+                'url' => $urlName,
+                'acessado' => $urlAcessado
+            ]);
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+    }
+
+    /**
+     * Deleta URL
+     */
+
+    public function destroy(Url $url)
+    {
+        try {
+            $url->delete();
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+    }
+
+    /**
+     * Salva nova URL
+     */
+
+    public function store(Request $request)
+    {
+        try {
+            $urlName = $request->get('urlName');
+            $urlAcessado = $request->get('urlAcessado');
+
+            URL::create([
+                'url'   =>  $urlName,
+                'acessado'          =>  $urlAcessado
+            ]);
+
+            return response()->json([
+                'url'   =>  $urlName,
+                'acessado' =>  $urlAcessado
+            ]);
+        } catch (Exception $e) {
             Log::error($e);
         }
     }

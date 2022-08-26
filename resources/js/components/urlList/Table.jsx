@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import TableRow from './TableRow';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import CreateModal from './Modals/CreateModal';
 
 
 class Table extends Component {
 
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -16,14 +19,14 @@ class Table extends Component {
 
 
     //Life cycle method
-    componentDidMount(){
+    componentDidMount() {
         this.getUrlList();
     }
 
     // GET URL list
     getUrlList = () => {
         let self = this;
-        axios.get('/get/url/list').then(function (response){
+        axios.get('/get/url/list').then(function (response) {
             self.setState({
                 urls: response.data
             });
@@ -35,8 +38,10 @@ class Table extends Component {
     render() {
         return (
             <div className="container">
+                <ToastContainer autoClose={2200} />
                 <div className="row justify-content-center">
                     <div className="col-md-8">
+                        <CreateModal />
                         <div className="card">
                             <table className="table table-hover">
                                 <thead>
@@ -48,7 +53,7 @@ class Table extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.urls.map(function(x,i){
+                                    {this.state.urls.map(function (x, i) {
                                         return <TableRow key={i} data={x} />
                                     })}
                                 </tbody>
