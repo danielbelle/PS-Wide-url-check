@@ -22,7 +22,7 @@ class UrlFactory extends Factory
             'url'           => $this->faker->url(),
             'acessado'      => $this->faker->boolean(),
             'status_code'   => $this->faker->numberBetween(100,500),
-            'corpo_html'    => $this->faker->string(),
+            'corpo_html'    => $this->faker->url(),
         ];
     }
 }

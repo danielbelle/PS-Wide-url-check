@@ -36,22 +36,31 @@ class Table extends Component {
 
     }
 
+    verifyDbUrls = () => {
+        if (this.state.urls.length > 0) {
+            this.state.urls.map(function (x, i) {
+                return <TableRow key={i} data={x} />
+            })
+        }
+    }
 
     render() {
         return (
             <div className="container">
                 <ToastContainer autoClose={2200} />
                 <div className="row justify-content-center">
-                    <div className="col-md-8">
+                    <div className="col-md-10">
                         <CreateModal />
                         <div className="card" >
                             <table className="table table-hover">
                                 <thead>
                                     <tr width="auto">
-                                        <th scope="col" width="50px">#</th>
-                                        <th scope="col" width="2000px">Url</th>
-                                        <th scope="col" width="150px">Visto</th>
-                                        <th scope="col" width="2000px">Funções</th>
+                                        <th scope="col" width="5%">#</th>
+                                        <th scope="col" width="30%">Url</th>
+                                        <th scope="col" width="15%">Lido pelo Robo?</th>
+                                        <th scope="col" width="15%">Código de Status</th>
+                                        <th scope="col" width="20%">Funções</th>
+                                        <th scope="col" width="15%">Ver detalhes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +72,7 @@ class Table extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }
