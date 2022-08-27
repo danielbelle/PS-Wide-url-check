@@ -15,6 +15,6 @@ class UrlSeeder extends Seeder
      */
     public function run()
     {
-        Url::factory(3)->create();
+        Url::factory(20)->create();
     }
 }

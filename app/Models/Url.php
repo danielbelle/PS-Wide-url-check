@@ -12,6 +12,8 @@ class Url extends Model
     protected $fillable = [
         'user_id',
         'url',
-        'acessado'
+        'acessado',
+        'status_code',
+        'corpo_html'
     ];
 }

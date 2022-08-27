@@ -14,7 +14,9 @@ class UrlsController extends Controller
     public function getUrlList()
     {
         try {
-            $urls = Url::orderBy('id', 'DESC')->get();
+            $id_logged = auth()->user()->id;
+            //$urls = Url::orderBy('id', 'DESC')->get();
+            $urls = Url::where('user_id', $id_logged)->get();
             return response()->json($urls);
         } catch (Exception $e) {
             Log::error($e);
@@ -83,7 +85,7 @@ class UrlsController extends Controller
 
             URL::create([
                 'url'   =>  $urlName,
-                'acessado'          =>  $urlAcessado
+                'acessado' =>  $urlAcessado
             ]);
 
             return response()->json([

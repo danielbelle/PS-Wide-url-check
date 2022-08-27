@@ -23,7 +23,7 @@ class CreateModal extends Component {
     storeUrlData = () => {
         axios.post('/store/url/data', {
             urlName: this.state.urlName,
-            urlAcessado: this.state.urlAcessado,
+            urlAcessado: this.state.urlAcessado
         }).then(() => {
             toast.success("Url adicionada com sucesso!");
 
@@ -37,7 +37,7 @@ class CreateModal extends Component {
         return (
             <>
                 <div className='row text-right mb-3 pb-3'>
-                    <button className='btn btn-info text-right col-3 offset-md-9'
+                    <button className='btn btn-info text-right col-3 offset-md-9 btn-sm'
                         data-toggle="modal"
                         data-target="#modalCreate"
                     >

@@ -3,6 +3,7 @@
 use App\Http\Controllers\UrlsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UsersController;
 
 
 Route::get('/', function () {
@@ -22,3 +23,4 @@ Route::post('/update/url/data', [UrlsController::class, 'updateUrlData']);
 Route::delete('/delete/url/data/{url}', [UrlsController::class, 'destroy']);
 
 Route::post('/store/url/data',[UrlsController::class, 'store']);
+

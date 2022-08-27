@@ -21,8 +21,8 @@ class UrlFactory extends Factory
             'user_id'       => $this->faker->numberBetween(1,4),
             'url'           => $this->faker->url(),
             'acessado'      => $this->faker->boolean(),
-            /*'status_code'   =>
-            'corpo_html'    =>*/
+            'status_code'   => $this->faker->numberBetween(100,500),
+            'corpo_html'    => $this->faker->string(),
         ];
     }
 }

@@ -54,6 +54,7 @@ class UpdateModal extends Component {
             toast.success("Sua Url foi atualizada com sucesso!");
             setTimeout(() => {
                 location.reload();
+
             }, 2500)
         })
     }

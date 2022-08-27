@@ -19,7 +19,7 @@ class ViewModal extends Component {
                         <div className="modal-body">
                             Url: <strong>{this.props.urlData.currentUrlName} </strong>
                             <hr />
-                            Acessado?: <strong>{this.props.urlData.currentUrlAcessado} </strong>
+                            Url foi acessada?: <strong>{this.props.urlData.currentUrlA === 1 ? "Sim" :"Não"} </strong>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

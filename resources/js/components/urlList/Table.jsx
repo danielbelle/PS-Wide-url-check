@@ -23,6 +23,7 @@ class Table extends Component {
         this.getUrlList();
     }
 
+
     // GET URL list
     getUrlList = () => {
         let self = this;
@@ -30,6 +31,7 @@ class Table extends Component {
             self.setState({
                 urls: response.data
             });
+            console.log(response);
         });
 
     }
@@ -42,14 +44,14 @@ class Table extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <CreateModal />
-                        <div className="card">
+                        <div className="card" >
                             <table className="table table-hover">
                                 <thead>
                                     <tr width="auto">
                                         <th scope="col" width="50px">#</th>
                                         <th scope="col" width="2000px">Url</th>
                                         <th scope="col" width="150px">Visto</th>
-                                        <th scope="col" width="3000px">Funções</th>
+                                        <th scope="col" width="2000px">Funções</th>
                                     </tr>
                                 </thead>
                                 <tbody>

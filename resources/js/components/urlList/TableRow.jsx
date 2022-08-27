@@ -7,12 +7,14 @@ class TableRow extends Component {
         super(props);
     }
 
+
+
     render() {
         return (
             <tr>
                 <th>{this.props.data.id}</th>
                 <td>{this.props.data.url}</td>
-                <td>{this.props.data.acessado}</td>
+                <td>{this.props.data.acessado === 1 ? "Sim" :"Não"}</td>
                 <td>
                     <TableActionButtons eachRowId={ this.props.data.id}  />
                 </td>
