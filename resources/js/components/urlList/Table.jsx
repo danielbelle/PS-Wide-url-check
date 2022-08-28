@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import TableRow from './TableRow';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -23,6 +23,11 @@ class Table extends Component {
         this.getUrlList();
     }
 
+    //Life cycle method
+    componentDidUpdate() {
+        setTimeout(() =>
+        this.getUrlList(),2500)
+    }
 
     // GET URL list
     getUrlList = () => {
@@ -31,10 +36,10 @@ class Table extends Component {
             self.setState({
                 urls: response.data
             });
-            console.log(response.data);
-        });
-
+            //console.log(response.data);
+        })
     }
+
 
     verifyDbUrls = () => {
         if (this.state.urls.length > 0) {

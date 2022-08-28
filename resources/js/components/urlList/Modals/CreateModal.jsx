@@ -49,6 +49,7 @@ class CreateModal extends Component {
     }
 
 
+
     storeUrlData = (event) => {
 
         const urlNameCreate = document.getElementById('urlNameCreate');
@@ -61,7 +62,9 @@ class CreateModal extends Component {
             }).then(() => {
                 toast.success("Url adicionada com sucesso!");
                 setTimeout(() => {
-                    location.reload();
+                    $('.modal').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
                 }, 2500)
             })
         } else {

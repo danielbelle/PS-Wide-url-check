@@ -9,8 +9,6 @@ class TableRow extends Component {
         super(props);
     }
 
-
-
     render() {
         return (
             <tr>

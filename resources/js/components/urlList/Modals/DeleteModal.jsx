@@ -8,12 +8,13 @@ class DeleteModal extends Component {
         super(props);
     }
 
+
     deleteUrlData = (url) => {
         axios.delete('/delete/url/data/' + url).then(() => {
             toast.error("Url excluída com sucesso");
-
-            setTimeout(() => {
-                location.reload();
+            setTimeout(() => {$('.modal').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
             }, 2500)
         })
     }

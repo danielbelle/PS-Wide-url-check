@@ -19,6 +19,7 @@ class UpdateModal extends Component {
         return regexp.test(s);
     }
 
+
     //atualiza o da URL nome
     inputUrlName = (event) => {
         const formControl = event.target.parentElement;
@@ -79,7 +80,9 @@ class UpdateModal extends Component {
             }).then(() => {
                 toast.success("Sua Url foi atualizada com sucesso!");
                 setTimeout(() => {
-                    location.reload();
+                    $('.modal').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
                 }, 2500)
             })
         } else {
