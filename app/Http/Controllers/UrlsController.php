@@ -15,8 +15,7 @@ class UrlsController extends Controller
     {
         try {
             $id_logged = auth()->user()->id;
-            //$urls = Url::orderBy('id', 'DESC')->get();
-            $urls = Url::where('user_id', $id_logged)->get();
+            $urls = Url::where('user_id', $id_logged)->orderBy('id', 'DESC')->get();
             return response()->json($urls);
         } catch (Exception $e) {
             Log::error($e);

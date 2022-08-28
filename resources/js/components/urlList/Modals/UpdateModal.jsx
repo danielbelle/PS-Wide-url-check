@@ -70,12 +70,12 @@ class UpdateModal extends Component {
     updateUrlData = (event) => {
 
         const urlInputUpdate = document.getElementById('urlInputUpdate');
-        console.log("urlInput"+urlInputUpdate.value);
+
         if (this.isUrl(urlInputUpdate.value)) {
             axios.post('/update/url/data', {
                 urlId: this.props.modalId,
                 urlName: this.state.urlName,
-                urlAcessado: 0,
+                urlAcessado: 0
             }).then(() => {
                 toast.success("Sua Url foi atualizada com sucesso!");
                 setTimeout(() => {
@@ -105,10 +105,10 @@ class UpdateModal extends Component {
                                         placeholder="Url no formato: https://www.google.com.br/"
                                         required
                                         onChange={this.inputUrlName}
-                                        onKeyUp={function (event) {
+                                        onKeyDown={function (event) {
                                             if (event.key === 'Enter') {
-                                                event.preventDefault();
                                                 document.getElementById("btnUpdate").click();
+                                                event.preventDefault();
                                             }
                                         }}
                                     />

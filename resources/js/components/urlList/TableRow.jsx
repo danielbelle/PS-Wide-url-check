@@ -1,3 +1,4 @@
+import { indexOf } from 'lodash';
 import React, { Component } from 'react';
 import TableActionButtons from './TableActionButtons';
 import TableActionSeeMore from './TableActionSeeMore';
@@ -13,7 +14,6 @@ class TableRow extends Component {
     render() {
         return (
             <tr>
-                <th>{this.props.data.id}</th>
                 <td>{this.props.data.url}</td>
                 <td>{this.props.data.acessado === 1 ? "Sim" :"Não"}</td>
                 <td>{this.props.data.id}</td>

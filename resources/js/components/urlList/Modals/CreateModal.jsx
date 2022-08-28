@@ -52,12 +52,12 @@ class CreateModal extends Component {
     storeUrlData = (event) => {
 
         const urlNameCreate = document.getElementById('urlNameCreate');
-        console.log(urlNameCreate.value);
+
         if (this.isUrl(urlNameCreate.value)) {
             axios.post('/store/url/data', {
                 user_id: this.state.urlUserId,
                 urlName: this.state.urlName,
-                urlAcessado: this.state.urlAcessado,
+                urlAcessado: this.state.urlAcessado
             }).then(() => {
                 toast.success("Url adicionada com sucesso!");
                 setTimeout(() => {
@@ -97,10 +97,10 @@ class CreateModal extends Component {
                                             placeholder="Url no formato: https://www.google.com.br/"
                                             required
                                             onChange={this.inputUrlName}
-                                            onKeyUp={function (event) {
+                                            onKeyDown={function (event) {
                                                 if (event.key === 'Enter') {
-                                                    event.preventDefault();
                                                     document.getElementById("btnCreate").click();
+                                                    event.preventDefault();
                                                 }
                                             }}
                                         />

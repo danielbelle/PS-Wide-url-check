@@ -31,7 +31,7 @@ class Table extends Component {
             self.setState({
                 urls: response.data
             });
-            //console.log(response);
+            console.log(response.data);
         });
 
     }
@@ -51,20 +51,19 @@ class Table extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-10">
                         {<CreateModal />}
-                        <div className="card" >
+                        <div className="card" id="urlView">
                             <table className="table table-hover">
                                 <thead>
                                     <tr width="auto">
-                                        <th scope="col" width="5%">#</th>
-                                        <th scope="col" width="30%">Url</th>
-                                        <th scope="col" width="15%">Lido pelo robo?</th>
+                                        <th scope="col" width="40%">Url</th>
+                                        <th scope="col" width="10%">Lido?</th>
                                         <th scope="col" width="15%">Código de Status</th>
                                         <th scope="col" width="20%">Funções</th>
                                         <th scope="col" width="15%">Ver detalhes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.urls.map(function (x, i) {
+                                    {this.state.urls.map(function (x,i) {
                                         return <TableRow key={i} data={x} />
                                     })}
                                 </tbody>
