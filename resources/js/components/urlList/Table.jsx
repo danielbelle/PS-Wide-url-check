@@ -31,7 +31,7 @@ class Table extends Component {
             self.setState({
                 urls: response.data
             });
-            console.log(response);
+            //console.log(response);
         });
 
     }
@@ -50,14 +50,14 @@ class Table extends Component {
                 <ToastContainer autoClose={2200} />
                 <div className="row justify-content-center">
                     <div className="col-md-10">
-                        <CreateModal />
+                        {<CreateModal />}
                         <div className="card" >
                             <table className="table table-hover">
                                 <thead>
                                     <tr width="auto">
                                         <th scope="col" width="5%">#</th>
                                         <th scope="col" width="30%">Url</th>
-                                        <th scope="col" width="15%">Lido pelo Robo?</th>
+                                        <th scope="col" width="15%">Lido pelo robo?</th>
                                         <th scope="col" width="15%">Código de Status</th>
                                         <th scope="col" width="20%">Funções</th>
                                         <th scope="col" width="15%">Ver detalhes</th>

@@ -10,23 +10,46 @@ class UpdateModal extends Component {
         super(props);
 
         this.state = {
-            /* MOSTRAR DETALHES DA REQUISIÇÃO HTTP*/
-            urlName: null,
-            urlAcessado: null
+            urlName: null
         }
+    }
 
+    isUrl = (s) => {
+        var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+        return regexp.test(s);
     }
 
     //atualiza o da URL nome
     inputUrlName = (event) => {
-        this.setState({
-            urlName: event.target.value
+        const formControl = event.target.parentElement;
+        const input = formControl.querySelector('input');
+        const small = formControl.querySelector('small');
 
-        });
-        /*console.log(this.state.urlName);*/
+        if (event.target.value === '' || event.target.value === null) {
+
+            small.innerText = 'URL vazia';
+            small.className = 'text-danger';
+            input.className = 'form-control is-invalid mb-3';
+
+        } else if (!this.isUrl(event.target.value)) {
+            small.innerText = 'Url não válida, Favor adicione uma URL válida ex: https://www.google.com.br/';
+            small.className = 'text-danger';
+            input.className = 'form-control is-invalid mb-3';
+
+        } else {
+            small.innerText = 'URL válida';
+            small.className = 'text-success';
+            input.className = 'form-control is-valid mb-3';
+
+            this.setState({
+                urlName: event.target.value,
+            });
+        }
+
+
     }
 
-    static getDerivedStateFromProps(props, current_state) {
+    /*static getDerivedStateFromProps(props, current_state) {
         let urlUpdate = {
             urlName: null
         }
@@ -36,27 +59,32 @@ class UpdateModal extends Component {
             return null;
         }
 
-        if (current_state.urlName !== props.urlData.currentUrlName ||
-            current_state.urlName === props.urlData.currentUrlName) {
-            urlUpdate.urlName = props.urlData.currentUrlName;
+        //se apagar repete o nome
+         if (current_state.urlName !== props.urlData.currentUrlName ||
+             current_state.urlName === props.urlData.currentUrlName) {
+             urlUpdate.urlName = props.urlData.currentUrlName;
+         }
+         return urlUpdate;
+    }*/
+
+    updateUrlData = (event) => {
+
+        const urlInputUpdate = document.getElementById('urlInputUpdate');
+        console.log("urlInput"+urlInputUpdate.value);
+        if (this.isUrl(urlInputUpdate.value)) {
+            axios.post('/update/url/data', {
+                urlId: this.props.modalId,
+                urlName: this.state.urlName,
+                urlAcessado: 0,
+            }).then(() => {
+                toast.success("Sua Url foi atualizada com sucesso!");
+                setTimeout(() => {
+                    location.reload();
+                }, 2500)
+            })
+        } else {
+            toast.error("Verificar URL");
         }
-
-
-        return urlUpdate;
-    }
-
-    updateUrlData = () => {
-        axios.post('/update/url/data', {
-            urlId: this.props.modalId,
-            urlName: this.state.urlName,
-            urlAcessado: 0,
-        }).then(() => {
-            toast.success("Sua Url foi atualizada com sucesso!");
-            setTimeout(() => {
-                location.reload();
-
-            }, 2500)
-        })
     }
 
     render() {
@@ -70,21 +98,29 @@ class UpdateModal extends Component {
                         </div>
                         <div className="modal-body">
                             <form className='form'>
-                                <div className='form-group'>
+                                <div className="form-group">
                                     <input type="text"
-                                        id="urlName"
+                                        id="urlInputUpdate"
                                         className='form-control mb-3'
-                                        value={this.state.urlName ?? ""}
+                                        placeholder="Url no formato: https://www.google.com.br/"
+                                        required
                                         onChange={this.inputUrlName}
+                                        onKeyUp={function (event) {
+                                            if (event.key === 'Enter') {
+                                                event.preventDefault();
+                                                document.getElementById("btnUpdate").click();
+                                            }
+                                        }}
                                     />
+                                    <small></small>
                                 </div>
-
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <input type="submit"
-                                className='btn btn-info'
+                            <input type="button"
+                                id="btnUpdate"
                                 value="Atualizar"
+                                className='btn btn-info'
                                 onClick={this.updateUrlData}
                             />
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

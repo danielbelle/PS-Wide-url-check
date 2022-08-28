@@ -44,16 +44,16 @@ class UrlsController extends Controller
         try {
             $urlId = $request->get('urlId');
             $urlName = $request->get('urlName');
-            $urlAcessado = $request->get('urlAcessado');
 
             Url::where('id', $urlId)->update([
                 'url' => $urlName,
-                'acessado' => $urlAcessado
+                'acessado' =>  0,
+                'status_code' => 0,
+                'corpo_html' => '',
             ]);
 
             return response()->json([
                 'url' => $urlName,
-                'acessado' => $urlAcessado
             ]);
         } catch (Exception $e) {
             Log::error($e);
@@ -80,17 +80,21 @@ class UrlsController extends Controller
     public function store(Request $request)
     {
         try {
+
+            $user_id = auth()->user()->id;
             $urlName = $request->get('urlName');
-            $urlAcessado = $request->get('urlAcessado');
 
             URL::create([
+                'user_id'=> $user_id,
                 'url'   =>  $urlName,
-                'acessado' =>  $urlAcessado
+                'acessado' =>  0,
+                'status_code' => 0,
+                'corpo_html' => '',
             ]);
 
             return response()->json([
-                'url'   =>  $urlName,
-                'acessado' =>  $urlAcessado
+                'user_id'=> $user_id,
+                'url'   =>  $urlName
             ]);
         } catch (Exception $e) {
             Log::error($e);
