@@ -22,4 +22,4 @@ Route::delete('/delete/url/data/{url}', [UrlsController::class, 'destroy']);
 
 Route::post('/store/url/data',[UrlsController::class, 'store']);
 
-Route::get('/admin', [HttpController::class, 'startRobot']); /*APAGAR ROTA*/
+//Route::get('/admin', [HttpController::class, 'startRobot']); /*APAGAR ROTA*/

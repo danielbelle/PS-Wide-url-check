@@ -11,17 +11,16 @@ use Illuminate\Support\Facades\Http;
 class HttpController extends Controller
 {
 
-    private $url;
+    private $urls;
 
     public function startRobot()
     {
-        while (true) {
-            try {
-                $this->checkUrlList();
-                return print_r('vim');
-            } catch (Exception $e) {
-                Log::error($e);
-            }
+        print_r('oi HttpController');
+        try {
+            $this->checkUrlList();
+            return print_r('vim');
+        } catch (Exception $e) {
+            Log::error($e);
         }
     }
 
@@ -31,11 +30,11 @@ class HttpController extends Controller
         // Get all URL with accessed = 0
         $this->urls = Url::where('acessado', '0')->orderBy('id', 'ASC')->select(array('id', 'url'))->get();
 
-        echo($this->urls.'<br>');
+        echo ($this->urls . '<br>');
         try {
             // make http request to url id='x'
             foreach ($this->urls as $val) {
-                echo($val);
+                echo ($val);
                 $var_to_see_url = $val->url;
                 $id_url = $val->id;
 

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { delay } from 'lodash';
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -72,6 +73,7 @@ class UpdateModal extends Component {
 
         const urlInputUpdate = document.getElementById('urlInputUpdate');
 
+        console.log(urlInputUpdate.value);
         if (this.isUrl(urlInputUpdate.value)) {
             axios.post('/update/url/data', {
                 urlId: this.props.modalId,
@@ -86,7 +88,7 @@ class UpdateModal extends Component {
                 }, 2500)
             })
         } else {
-            toast.error("Verificar URL");
+            toast.error("Update não funcionou, verificar URL");
         }
     }
 
