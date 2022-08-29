@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('url');
             $table->boolean('acessado');
-            $table->string('status_code');
-            $table->string('corpo_html');
+            $table->integer('status_code');
+            $table->longText('corpo_html');
             $table->timestamps();
         });
     }

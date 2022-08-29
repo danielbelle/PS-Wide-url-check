@@ -18,11 +18,11 @@ class UrlFactory extends Factory
     {
         return [
 
-            'user_id'       => $this->faker->numberBetween(1,4),
+            'user_id'       => $this->faker->numberBetween(1,5),
             'url'           => $this->faker->url(),
             'acessado'      => $this->faker->boolean(),
-            'status_code'   => $this->faker->numberBetween(100,500),
-            'corpo_html'    => $this->faker->url(),
+            'status_code'   => $this->faker->numberBetween(0,1),
+            'corpo_html'    => $this->faker->url()
         ];
     }
 }

@@ -9,7 +9,10 @@ use App\Models\Url;
 
 class UrlsController extends Controller
 {
-    // Pega a lista de URL do banco de dados.
+    /**
+     * Pega a lista de URL do banco de dados.
+     *
+     */
 
     public function getUrlList()
     {
@@ -84,7 +87,7 @@ class UrlsController extends Controller
             $urlName = $request->get('urlName');
 
             URL::create([
-                'user_id'=> $user_id,
+                'user_id' => $user_id,
                 'url'   =>  $urlName,
                 'acessado' =>  0,
                 'status_code' => 0,
@@ -92,7 +95,7 @@ class UrlsController extends Controller
             ]);
 
             return response()->json([
-                'user_id'=> $user_id,
+                'user_id' => $user_id,
                 'url'   =>  $urlName
             ]);
         } catch (Exception $e) {
