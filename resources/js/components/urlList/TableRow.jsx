@@ -11,10 +11,10 @@ class TableRow extends Component {
 
     render() {
         return (
-            <tr>
+            <tr id={'tr'+this.props.data.id}>
                 <td>{this.props.data.url}</td>
                 <td>{this.props.data.acessado === 1 ? "Sim" :"Não"}</td>
-                <td>{this.props.data.id}</td>
+                <td>{this.props.data.status_code}</td>
                 <td><TableActionButtons eachRowId={ this.props.data.id} /></td>
                 <td><TableActionSeeMore eachRowId={ this.props.data.id} /></td>
             </tr>

@@ -12,7 +12,8 @@ class TableActionSeeMore extends Component {
         this.state = {
             /* MOSTRAR DETALHES DA REQUISIÇÃO HTTP*/
             currentUrlName: null,
-            currentUrlAcessado: null
+            currentUrlStatus: null,
+            currentUrlBody: null
         }
 
     }
@@ -24,10 +25,10 @@ class TableActionSeeMore extends Component {
         }).then((response) => {
             this.setState({
                 currentUrlName: response.data.url,
-                currentUrlAcessado: response.data.acessado,
+                currentUrlStatus: parseInt(response.data.status_code),
+                currentUrlBody: response.data.corpo_html,
             })
-
-            /*console.log(response);*/
+            //console.log(response.data.status_code);
         });
     }
 

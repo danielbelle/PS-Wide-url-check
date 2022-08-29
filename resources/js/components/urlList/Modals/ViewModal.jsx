@@ -17,9 +17,11 @@ class ViewModal extends Component {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            Url: <strong>{this.props.urlData.currentUrlName} </strong>
+                            <strong>Url</strong>: <a href={this.props.urlData.currentUrlName} target="_blank">{this.props.urlData.currentUrlName}</a>
                             <hr />
-                            Url foi acessada?: <strong>{this.props.urlData.currentUrlA === 1 ? "Sim" :"Não"} </strong>
+
+                            <strong>Corpo Url</strong>:<pre> {this.props.urlData.currentUrlStatus === 404 ? 'Erro 404, página não encontrada' : this.props.urlData.currentUrlBody}</pre>
+
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
