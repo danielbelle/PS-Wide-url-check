@@ -28,7 +28,6 @@ class CheckAllUrls extends Command
      */
     public function handle()
     {
-        print_r('oi CheckAllUrls');
         $Http = new HttpController;
         $Http->startRobot();
     }

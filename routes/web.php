@@ -3,10 +3,9 @@
 use App\Http\Controllers\UrlsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\HttpController;
 
 
-Route::get('/', function () {return view('welcome');});
+Route::get('/', function () {return view('auth/login');});
 
 Auth::routes();
 
