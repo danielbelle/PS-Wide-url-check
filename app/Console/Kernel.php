@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
 
 
-        $schedule->command('check:CheckAllUrls')->everyTwoMinutes();
+        $schedule->command('my:task')->everyTwoMinutes()->name('my:task')
+        ->onOneServer();
 
     }
 
