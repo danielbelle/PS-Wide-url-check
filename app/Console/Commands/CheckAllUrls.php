@@ -12,7 +12,7 @@ class CheckAllUrls extends Command
      *
      * @var string
      */
-    protected $signature = 'my:task';
+    protected $signature = 'check:CheckAllUrls';
 
     /**
      * The console command description.
