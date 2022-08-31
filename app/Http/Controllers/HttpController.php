@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use App\Models\Url;
-use Illuminate\Log\Logger;
 use Illuminate\Support\Facades\Http;
 
 
@@ -52,7 +51,6 @@ class HttpController extends Controller
 
                     //log
                     Log::channel('robot_url')->info("Acessado os dados da URL {$var_to_see_url} ");
-
                 } catch (Exception $e) {
                     echo $e->getMessage();
                     Log::channel('robot_url')->error($e);

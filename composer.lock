@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33dd7767db8c900f909d89eef2b0bdc6",
+    "content-hash": "83306fcc64bfb2f87fdc588bf9fd9617",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -145,6 +145,55 @@
                 }
             ],
             "time": "2022-08-10T22:54:19+00:00"
+        },
+        {
+            "name": "cron/cron",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Cron/Cron.git",
+                "reference": "103d8562aca8a5fd135c69b3fe93aad0b5b701d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Cron/Cron/zipball/103d8562aca8a5fd135c69b3fe93aad0b5b701d4",
+                "reference": "103d8562aca8a5fd135c69b3fe93aad0b5b701d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0",
+                "symfony/process": "^4.0|^5.0|^6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cron\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dries De Peuter",
+                    "email": "dries@nousefreak.be"
+                }
+            ],
+            "description": "Cronjobs",
+            "support": {
+                "issues": "https://github.com/Cron/Cron/issues",
+                "source": "https://github.com/Cron/Cron/tree/1.6.0"
+            },
+            "time": "2021-12-29T12:06:58+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
